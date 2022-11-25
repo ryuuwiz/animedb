@@ -1,6 +1,6 @@
 const SearchBar = () => {
   return (
-    <div className="text-center p-5">
+    <div className="text-center px-2 py-8">
       <input
         type="text"
         name="search"
