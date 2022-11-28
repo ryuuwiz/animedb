@@ -3,9 +3,12 @@ import SearchBar from "../components/SearchBar";
 
 export default function Home() {
   return (
-    <div className="p-4">
+    <div className="p-4 md:max-w-screen-md mx-auto">
       <SearchBar />
-      <div className="flex flex-col">
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        <Card />
+        <Card />
+        <Card />
         <Card />
         <Card />
         <Card />
