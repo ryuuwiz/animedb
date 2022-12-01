@@ -13,7 +13,7 @@ Anime DB is a simple app anime database using JikanAPI
 - TypeScript
 - TailwindCSS
 
-URL : 
+URL : https://animedb-gamma.vercel.app/
 
 # Contribution
 
