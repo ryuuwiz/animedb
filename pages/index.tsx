@@ -2,8 +2,8 @@ import { GetStaticProps } from "next/types";
 import { useState } from "react";
 import Card from "../components/Card";
 import SearchBar from "../components/SearchBar";
-import { AnimeQuery, AnimeQueryData } from "../types/AnimeQuery";
-import { TopAnime, TopAnimeData } from "../types/topAnime";
+import AnimeQuery, { AnimeQueryData } from "../types/AnimeQuery";
+import TopAnime, { TopAnimeData } from "../types/TopAnime";
 
 export default function Home({ topAnime }: { topAnime: TopAnime }) {
   const [query, setQuery] = useState<string>("");
