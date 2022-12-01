@@ -1,6 +1,8 @@
 import Image from "next/image";
+import type { AnimeQueryData } from "../types/AnimeQuery";
+import type { TopAnimeData } from "../types/topAnime";
 
-const Card = ({ anime }: any) => {
+const Card = ({ anime }: { anime: TopAnimeData | AnimeQueryData }) => {
   return (
     <div className="border flex flex-col items-center px-4 pt-4 m-3 rounded hover:border-indigo-600 hover:border-2 hover:transition-all hover:duration-700 hover:cursor-pointer">
       <Image

@@ -1,17 +1,19 @@
+import { GetStaticProps } from "next/types";
 import { useState } from "react";
 import Card from "../components/Card";
 import SearchBar from "../components/SearchBar";
+import { AnimeQuery, AnimeQueryData } from "../types/AnimeQuery";
+import { TopAnime, TopAnimeData } from "../types/topAnime";
 
-export default function Home({ topAnime }: any) {
+export default function Home({ topAnime }: { topAnime: TopAnime }) {
   const [query, setQuery] = useState<string>("");
-  const [searchData, setSearchData] = useState<any>();
+  const [searchData, setSearchData] = useState<AnimeQuery>();
 
   const searchAnime = async () => {
     const res = await fetch(`https://api.jikan.moe/v4/anime?q=${query}&sfw`);
-    const animeQuery = await res.json();
-    setSearchData(animeQuery);
+    const animeQuery: AnimeQuery = await res.json();
 
-    console.log(animeQuery);
+    setSearchData(animeQuery);
   };
 
   return (
@@ -19,10 +21,10 @@ export default function Home({ topAnime }: any) {
       <SearchBar query={query} setQuery={setQuery} searchAnime={searchAnime} />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {!searchData
-          ? topAnime.data.map((anime: any) => (
+          ? topAnime.data.map((anime: TopAnimeData) => (
               <Card anime={anime} key={anime.mal_id} />
             ))
-          : searchData.data.map((anime: any) => (
+          : searchData.data.map((anime: AnimeQueryData) => (
               <Card anime={anime} key={anime.mal_id} />
             ))}
       </div>
@@ -30,13 +32,14 @@ export default function Home({ topAnime }: any) {
   );
 }
 
-export async function getServerSideProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch("https://api.jikan.moe/v4/top/anime");
-  const topAnime = await res.json();
+  const topAnime: TopAnime = await res.json();
 
   return {
     props: {
       topAnime,
     },
+    revalidate: 60,
   };
-}
+};
