@@ -1,4 +1,4 @@
-export interface TopAnime {
+export default interface TopAnime {
   data: TopAnimeData[];
   pagination: Pagination;
 }

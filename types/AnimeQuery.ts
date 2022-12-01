@@ -1,4 +1,4 @@
-export interface AnimeQuery {
+export default interface AnimeQuery {
   pagination: Pagination;
   data: AnimeQueryData[];
   links: Links;
