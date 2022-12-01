@@ -1,6 +1,6 @@
 import Image from "next/image";
-import type { AnimeQueryData } from "../types/AnimeQuery";
-import type { TopAnimeData } from "../types/topAnime";
+import { AnimeQueryData } from "../types/AnimeQuery";
+import { TopAnimeData } from "../types/topAnime";
 
 const Card = ({ anime }: { anime: TopAnimeData | AnimeQueryData }) => {
   return (
